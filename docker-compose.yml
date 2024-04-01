@@ -47,7 +47,7 @@ services:
     container_name: FrontReal
     image: danyilsmirnov/stell-front:1.0
     ports:
-      - "4201:80"
+      - "80:80"
     restart: unless-stopped
     networks:
       - real
