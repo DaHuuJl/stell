@@ -1,4 +1,4 @@
-version: "3.9"
+version: "2.0"
 
 networks:
   real:
@@ -11,7 +11,7 @@ volumes:
 services:
 
   postgres:
-    container_name: Real-Postgres
+    container_name: PostgresReal
     image: postgres:13
     volumes:
       - postgres_data_reality:/var/lib/postgresql/data
@@ -27,10 +27,9 @@ services:
     networks:
       - real
 
-  back:
-    container_name: Real-Backend
-    image: danyilsmirnov/real-backend:1.0
-    build: .
+  backend:
+    container_name: BackendReal
+    image: danyilsmirnov/stell-backend:1.0
     environment:
       SPRING_PROFILES_ACTIVE: prod
       SERVER_PORT: 8080
@@ -44,10 +43,13 @@ services:
     depends_on:
       - postgres
 
-  front:
-    container_name: Front
-    image: danyilsmirnov/reality-front:1.0
-    build: .
+  frontend:
+    container_name: FrontReal
+    image: danyilsmirnov/stell-front:1.0
     ports:
       - "4201:80"
     restart: unless-stopped
+    networks:
+      - real
+    depends_on:
+      - backend
