@@ -29,10 +29,11 @@ services:
 
   backend:
     container_name: BackendReal
-    image: danyilsmirnov/stell-backend:1.0
+    image: danyilsmirnov/stell-backend:1.1
     environment:
-      SPRING_PROFILES_ACTIVE: prod
       SERVER_PORT: 8080
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_LIQUIBASE_DROP_FIRST: false
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/real
       SPRING_DATASOURCE_USERNAME: owner_reality_db
       SPRING_DATASOURCE_PASSWORD: owner_reality_db
@@ -45,7 +46,7 @@ services:
 
   frontend:
     container_name: FrontReal
-    image: danyilsmirnov/stell-front:1.0
+    image: danyilsmirnov/stell-front:1.1
     ports:
       - "80:80"
     restart: unless-stopped
