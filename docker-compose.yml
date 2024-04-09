@@ -33,7 +33,7 @@ services:
     environment:
       SERVER_PORT: 8080
       SPRING_PROFILES_ACTIVE: prod
-      SPRING_LIQUIBASE_DROP_FIRST: false
+      SPRING_LIQUIBASE_DROP_FIRST: "false"
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/real
       SPRING_DATASOURCE_USERNAME: owner_reality_db
       SPRING_DATASOURCE_PASSWORD: owner_reality_db
